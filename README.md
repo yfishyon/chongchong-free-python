@@ -59,4 +59,4 @@ python main.py -i https://www.gangqinpu.com/cchtml/942280.htm -o midi
 
 ## 许可证
 
-MIT License
+GPL-3.0 License
