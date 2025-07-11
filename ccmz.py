@@ -59,20 +59,32 @@ class LibCCMZ:
             midi.addTempo(idx, 0, round(60000000 / initial_tempo))
             midi.addProgramChange(idx, 0, 0, 0)
 
-            for event in events:
-                if event.get('duration', 0) <= 0 or 'staff' not in event:
-                    continue
-                ev = event.get('event', [])
-                if not isinstance(ev, list) or len(ev) < 2:
-                    continue
-                if (event['staff'] - 1) != idx:
-                    continue
+        seen_notes = set()
 
-                pitch = ev[1]
-                time = event['tick'] / ticks_per_beat
-                duration = event['duration'] / ticks_per_beat
+        for event in events:
+            if event.get('duration', 0) <= 0 or 'staff' not in event:
+                continue
+            ev = event.get('event', [])
+            if not isinstance(ev, list) or len(ev) < 2:
+                continue
 
-                midi.addNote(idx, 0, pitch, time, duration, 80)
+            pitch = ev[1]
+            tick = event['tick']
+            duration = event['duration']
+            staff = event['staff']
+            if staff < 1 or staff > len(tracks):
+                continue
+            track_index = staff - 1
+
+            key = (track_index, tick, pitch)
+            if key in seen_notes:
+                continue
+            seen_notes.add(key)
+
+            start_time = tick / ticks_per_beat
+            duration_sec = duration / ticks_per_beat
+
+            midi.addNote(track_index, channel=0, pitch=pitch, time=start_time, duration=duration_sec, volume=80)
 
         with open(output, 'wb') as f:
             midi.writeFile(f)
