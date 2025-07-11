@@ -33,7 +33,7 @@ class LibCCMZ:
         if version == 1:
             zip_file = zipfile.ZipFile(io.BytesIO(data))
             info.score = zip_file.read("data.xml").decode('utf-8')
-            info.midi = zip_file.read("data.mid").decode('utf-8')
+            info.midi = zip_file.read("data.mid")
         elif version == 2:
             data = bytes([v + 1 if v % 2 == 0 else v - 1 for v in data])
             zip_file = zipfile.ZipFile(io.BytesIO(data))
