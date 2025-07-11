@@ -29,9 +29,10 @@ def get_opern_id(music_id):
 
 def get_details(opern_id):
     api = 'https://www.gangqinpu.com/api/home/user/getOpernDetail?'
-    params = f"service_type=ccgq&platform=web-ccgq&service_uid=&service_key=&ccgq_uuid=&uid=&id={opern_id}"
+    params = f"service_type=ccgq&platform=web-ccgq&id={opern_id}"
     headers = {
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.0.0 Safari/537.36"
+        "User-Agent": "Ciallo",
+        "Cookie": "current_uuid=p0003ccgqCiallo"
     }
     return httpget(api + params, headers=headers)
 
