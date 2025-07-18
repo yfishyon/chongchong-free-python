@@ -55,7 +55,7 @@ class LibCCMZ:
         midi.addText(track=0, time=0, text="Made with love by yfishyon from gangqinpu.com") #水印
 
         for idx, track in enumerate(tracks):
-            midi.addTrackName(idx, 0, track.get('name', f"Track{idx}"))
+            midi.addTrackName(idx, 0, f"Track{idx}") #阴死我了中文编码
             midi.addTempo(idx, 0, round(60000000 / initial_tempo))
             midi.addProgramChange(idx, 0, 0, 0)
 
