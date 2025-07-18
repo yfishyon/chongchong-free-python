@@ -59,7 +59,7 @@ def main():
         print("无法获取OpernID，退出。")
         sys.exit(1)
     details = json.loads(get_details(opern_id))['list']
-    ccmz_link = details['play_json']
+    ccmz_link = details['accompaniment_url']
     music_name = details['name']
     paid = details['is_pay']
     typename = details['typename']
