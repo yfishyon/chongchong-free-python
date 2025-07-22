@@ -28,13 +28,9 @@ def get_opern_id(music_id):
     return match.group(1)
 
 def get_details(opern_id):
-    api = 'https://www.gangqinpu.com/api/home/user/getOpernDetail?'
-    params = f"service_type=ccgq&platform=web-ccgq&id={opern_id}"
-    headers = {
-        "User-Agent": "Ciallo",
-        "Cookie": "current_uuid=p0003ccgqCiallo"
-    }
-    return httpget(api + params, headers=headers)
+    api = 'https://gangqinpu.lzjoy.com?'
+    params = f"urlparam=pad/detail/operninfov002&old_id={opern_id}"
+    return httpget(api + params)
 
 def safe_filename(name):
     return ''.join(c if c not in '/\\:*?"<>|' else ' ' for c in name)
@@ -59,7 +55,8 @@ def main():
         print("无法获取OpernID，退出。")
         sys.exit(1)
     details = json.loads(get_details(opern_id))['list']
-    ccmz_link = details['accompaniment_url']
+    #print(details)
+    ccmz_link = details['play_json']
     music_name = details['name']
     paid = details['is_pay']
     typename = details['typename']
