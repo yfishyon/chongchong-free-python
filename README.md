@@ -13,6 +13,7 @@ chongchong-free-python 是一个 python 工具，支持根据钢琴谱 id 或链
 - 自动识别付费/免费曲目
 - 自动保存为标准 midi 文件
 - 支持自定义保存目录
+- 支持下载乐谱
 
 ## 安装
 
@@ -36,7 +37,9 @@ python main.py -i <琴谱id或url> [-o <保存目录>]
 ```
 
 - `-i` / `--id`：必填，钢琴谱id或者钢琴谱网址（如 942280 或 https://www.gangqinpu.com/cchtml/942280.htm ）
-- `-o` / `--output`：选填，midi保存目录，默认 `output`
+- `-o` / `--output`：选填，乐谱保存目录，默认 `output`
+- `-png`：选填，是否保存png格式乐谱
+- `-pdf`：选填，是否保存pdf格式乐谱
 
 #### 示例
 
@@ -44,8 +47,8 @@ python main.py -i <琴谱id或url> [-o <保存目录>]
 # 下载ID为942280的钢琴谱
 python main.py -i 942280
 
-# 下载指定URL的钢琴谱并保存到 mymidis 目录
-python main.py -i https://www.gangqinpu.com/cchtml/942280.htm -o midi
+# 下载指定URL的钢琴谱并保存到pdf乐谱
+python main.py -i https://www.gangqinpu.com/cchtml/942280.htm -pdf
 ```
 
 ## 注意事项
