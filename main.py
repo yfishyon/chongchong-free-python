@@ -144,7 +144,7 @@ def main():
     typename = details['typename']
     authorc_name = details['author']
 
-    file_name = f"{safe_filename(music_name)}-{typename}"
+    file_name = f"{safe_filename(music_name)}-{safe_filename(typename)}"
 
     print(f"付费歌曲: {boolean_string(paid == '1')}")
     print(f"音乐名: {music_name}")
