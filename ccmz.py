@@ -1,5 +1,4 @@
 import zipfile
-import json
 import io
 import requests
 from midiutil.MidiFile import MIDIFile
