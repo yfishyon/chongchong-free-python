@@ -2,6 +2,8 @@
 
 > [虫虫钢琴](https://www.gangqinpu.com/)midi下载工具。
 
+> **实验性功能（乐谱生成）：** 见 [`test` 分支](https://github.com/yfishyon/chongchong-free-python/tree/test)，支持从 CCMZ 生成完整乐谱（此分支为ai生成 不保证其可用性）。
+
 ## 项目简介
 
 chongchong-free-python 是一个 python 工具，支持根据钢琴谱 id 或链接自动下载钢琴谱的 midi 文件，并支持指定保存目录。
